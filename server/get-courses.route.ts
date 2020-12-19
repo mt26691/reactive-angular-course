@@ -13,6 +13,7 @@ export function getAllCourses(req: Request, res: Response) {
     return;
  */
 
+
         setTimeout(() => {
 
              res.status(200).json({payload:Object.values(COURSES)});
