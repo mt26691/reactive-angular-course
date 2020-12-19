@@ -17,8 +17,8 @@ export class CoursesCardListComponent implements AfterViewInit {
     @Input()
     courses: Course[] = [];
 
-    @Output()
-    public coursesChanges = new EventEmitter();
+    // @Output()
+    // public coursesChanges = new EventEmitter();
 
     constructor(private dialog: MatDialog) {
 
@@ -40,10 +40,10 @@ export class CoursesCardListComponent implements AfterViewInit {
 
         const dialogRef = this.dialog.open(CourseDialogComponent, dialogConfig);
 
-        dialogRef.afterClosed()
-            .pipe(filter(val => !!val),
-                tap(val => this.coursesChanges.emit(val))
-            ).subscribe();
+        // dialogRef.afterClosed()
+        //     .pipe(filter(val => !!val),
+        //         tap(val => this.coursesChanges.emit(val))
+        //     ).subscribe();
 
     }
 }
