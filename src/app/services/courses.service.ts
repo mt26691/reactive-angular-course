@@ -21,6 +21,14 @@ export class CoursesService {
             .pipe(shareReplay());
     }
 
+    loadAllCourseLessons(courseId: number): Observable<Lesson[]> {
+        return this.http.get<Lesson[]>('/api/lessons', {
+            params: {
+                pageSize: '10000',
+                courseId: courseId.toString()
+            }
+        }).pipe(map(res => res['payload']), shareReplay());
+    }
 
     searchLessons(search: string): Observable<Lesson[]> {
         return this.http.get<Lesson[]>('/api/lessons', {
@@ -29,5 +37,9 @@ export class CoursesService {
                 pageSize: '100',
             }
         }).pipe(map(res => res['payload']), shareReplay());
+    }
+
+    loadCourseById(id): Observable<Course> {
+        return this.http.get<Course>(`/api/courses/${id}`).pipe(shareReplay());
     }
 }
